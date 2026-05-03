@@ -37,9 +37,9 @@ intellij {
 tasks {
     patchPluginXml {
         version.set(project.version.toString())
-        // since-build 仍从 2018.1 段起声明；until-build 用 999.* 表示不设实际上限（未来新 IDEA 构建号仍属可安装范围）。
+        // since-build 仍从 2018.1 段起声明；until-build 设为具体版本号而非 magic value。
         sinceBuild.set("181")
-        untilBuild.set("999.*")
+        untilBuild.set("253.*")
     }
 
     withType<KotlinCompile>().configureEach {
