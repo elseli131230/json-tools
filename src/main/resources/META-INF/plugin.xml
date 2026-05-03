@@ -1,0 +1,152 @@
+<idea-plugin>
+    <id>com.cn.else.jsontools</id>
+    <resource-bundle>messages.JsonToolsBundle</resource-bundle>
+    <name>JSON Tools</name>
+    <vendor email="you@example.com" url="https://example.com">Else</vendor>
+
+    <description><![CDATA[
+        <h2>JSON Tools — English</h2>
+        <p>A side-tool-window plugin for IntelliJ-based IDEs: format JSON safely and compare two JSON payloads <b>semantically</b> (object key order and array element order are ignored). <b>Optimized for very large JSON</b>: parsing and diff run off the EDT with staged rendering so huge payloads remain usable without freezing the IDE.</p>
+        <ul>
+          <li><b>Huge JSON, responsive UI</b>: asynchronous compute plus minimized incremental DOM/editor churn when painting diff highlights and formatting large outputs.</li>
+          <li><b>Strict formatting</b>: catches common non-RFC issues early (trailing commas, comments, single-quoted strings, etc.) plus Gson RFC 8259 strict parsing; errors point to line/column where possible.</li>
+          <li><b>Semantic diff</b>: side-by-side highlighted results; sensible array pairing (exact match, stable id when present, structure fingerprint when only volatile ids differ, similarity fallback).</li>
+          <li><b>Workflow</b>: after compare, opens the result view automatically and jumps to the first difference; use Prev/Next to walk highlights; primary button toggles between result and edit.</li>
+          <li><b>Tree view</b>: optional tree explorer inside the Format tab (expand/collapse controls).</li>
+          <li><b>UI &amp; i18n</b>: heavy work runs off the UI thread; interface strings support multiple languages with an optional manual language override (persisted across restarts).</li>
+        </ul>
+
+        <h2>JSON Tools — 简体中文</h2>
+        <p>适用于 IntelliJ 系列 IDE 的侧栏工具窗口插件：<b>安全格式化 JSON</b>，并对两份 JSON 做<b>语义对比</b>（忽略对象键顺序与数组元素顺序）。<b>面向超大 JSON</b>：耗时解析与对比在后台执行，渲染侧避免细碎频繁的增量更新，尽量做到<b>大体量文档仍流畅、IDE 不易卡顿</b>。</p>
+        <ul>
+          <li><b>超大 JSON、流畅优先</b>：异步计算；格式化与差异高亮采用「先装入全文再分段着色」等策略，减轻界面抖动与长时间冻结。</li>
+          <li><b>严格格式化</b>：先用扫描层拦截尾逗号、注释、单引号等非标准写法，再结合 Gson 的 RFC 8259 严格解析；错误信息尽量包含行列提示。</li>
+          <li><b>语义 Diff</b>：左右分栏高亮；数组元素采用精确匹配、稳定 id（若有）、仅易变 id 变化时的结构指纹配对，以及相似度兜底，减少整块误标。</li>
+          <li><b>使用流程</b>：对比完成后自动进入结果视图并定位到第一处差异；可用上一处/下一处浏览；主按钮在「对比」与「返回编辑」之间切换。</li>
+          <li><b>树形视图</b>：在「格式化」标签内可切换到树形结构浏览（支持展开/折叠工具条）。</li>
+          <li><b>界面与多语言</b>：解析与对比在后台线程执行；界面支持多语言，并可手动选择语言（重启后仍保留手动设置）。</li>
+        </ul>
+
+        <h2>JSON Tools — Deutsch</h2>
+        <p>Seitenbereich für IntelliJ-basierte IDEs: JSON sicher formatieren und zwei Dokumente <b>semantisch</b> vergleichen (Reihenfolge von Objektschlüsseln und Arrayelementen wird ignoriert). <b>Für sehr große JSON optimiert</b>: Parsing und Diff laufen nicht auf dem EDT; gestuftes Rendering, damit große Daten nutzbar bleiben ohne die IDE einzufrieren.</p>
+        <ul>
+          <li><b>Riesiges JSON, flüssige UI</b>: asynchrone Berechnung und weniger feinkörnige DOM-/Editor-Updates bei Diff-Hervorhebung und Formatierung großer Ausgaben.</li>
+          <li><b>Strikte Formatierung</b>: frühe Erkennung gängiger Nicht-RFC-Probleme (Schlusskommas, Kommentare, einfache Anführungszeichen usw.) plus Gson RFC-8259-Striktmodus; Fehler mit Zeile/Spalte wo möglich.</li>
+          <li><b>Semantischer Diff</b>: nebeneinander mit Hervorhebung; sinnvolle Array-Zuordnung (exakte Übereinstimmung, stabile ID falls vorhanden, Struktur-Fingerprint wenn nur volatile IDs wechseln, Ähnlichkeits-Fallback).</li>
+          <li><b>Ablauf</b>: nach dem Vergleich automatisch Ergebnisansicht und Sprung zur ersten Differenz; Vor/Zurück durch Hervorhebungen; Hauptbutton zwischen Ergebnis und Bearbeitung.</li>
+          <li><b>Baumansicht</b>: optionaler Baum im Register „Formatieren“ (Ein-/Ausklappen).</li>
+          <li><b>Oberfläche &amp; i18n</b>: schwere Arbeit im Hintergrund; viele Sprachen, optionale manuelle Sprachwahl (über Neustarts gespeichert).</li>
+        </ul>
+
+        <h2>JSON Tools — Français</h2>
+        <p>Fenêtre d’outil latérale pour les IDE IntelliJ : formater le JSON en toute sécurité et comparer deux documents <b>sémantiquement</b> (ordre des clés d’objet et des éléments de tableau ignoré). <b>Optimisé pour les très gros JSON</b> : analyse et diff hors fil d’interface, rendu par étapes pour éviter de figer l’IDE.</p>
+        <ul>
+          <li><b>Gros JSON, interface fluide</b> : calcul asynchrone et moins de mises à jour DOM/éditeur fines lors du surlignage des diffs et du formatage de gros résultats.</li>
+          <li><b>Formatage strict</b> : détection précoce des écarts non RFC (virgules finales, commentaires, guillemets simples, etc.) plus Gson en mode strict RFC 8259 ; erreurs avec ligne/colonne si possible.</li>
+          <li><b>Diff sémantique</b> : résultats côte à côte colorés ; appariement raisonnable des tableaux (égalité exacte, id stable, empreinte structurelle si seuls les ids volatiles changent, repli par similarité).</li>
+          <li><b>Flux de travail</b> : après comparaison, ouverture automatique de la vue résultat et saut à la première différence ; Préc./Suiv. ; bouton principal pour basculer résultat / édition.</li>
+          <li><b>Vue arborescente</b> : explorateur optionnel dans l’onglet Format (déplier/replier).</li>
+          <li><b>IU &amp; i18n</b> : tâches lourdes hors thread UI ; plusieurs langues et langue manuelle persistante après redémarrage.</li>
+        </ul>
+
+        <h2>JSON Tools — Русский</h2>
+        <p>Боковая панель для IDE на платформе IntelliJ: безопасное форматирование JSON и <b>семантическое</b> сравнение двух документов (порядок ключей объектов и элементов массивов не учитывается). <b>Оптимизация под очень большие JSON</b>: разбор и diff не на EDT, поэтапная отрисовка — большие файлы остаются пригодными без зависания IDE.</p>
+        <ul>
+          <li><b>Большие JSON, отзывчивый интерфейс</b>: фоновые вычисления и минимизация частых инкрементальных обновлений DOM/редактора при подсветке diff и форматировании.</li>
+          <li><b>Строгое форматирование</b>: раннее выявление типичных отступлений от RFC (лишние запятые, комментарии, одинарные кавычки и т.д.) плюс Gson STRICT RFC 8259; по возможности строка/столбец в ошибках.</li>
+          <li><b>Семантический diff</b>: две колонки с подсветкой; разумное сопоставление элементов массивов (точное совпадение, стабильный id, структурный отпечаток при смене только volatile id, запасной вариант по сходству).</li>
+          <li><b>Сценарий</b>: после сравнения автоматически открывается результат и переход к первому отличию; Назад/Вперёд по подсветкам; основная кнопка переключает результат и редактирование.</li>
+          <li><b>Дерево</b>: необязательное дерево во вкладке «Формат» (развернуть/свернуть).</li>
+          <li><b>Интерфейс и языки</b>: тяжёлая работа вне EDT; несколько языков и ручной выбор языка (сохраняется после перезапуска).</li>
+        </ul>
+
+        <h2>JSON Tools — 日本語</h2>
+        <p>IntelliJ 系 IDE 向けサイドツールウィンドウ。<b>セマンティック</b>に JSON を整形・比較（オブジェクトのキー順と配列要素の順序は無視）。<b>超大規模 JSON 向け</b>：解析と diff は EDT 外で実行し、段階的レンダリングにより IDE をフリーズさせずに大きなデータを扱えます。</p>
+        <ul>
+          <li><b>巨大 JSON と応答性</b>：非同期処理と、diff 強調・大出力フォーマット時の細かすぎる DOM/エディタ更新の抑制。</li>
+          <li><b>厳密な整形</b>：RFC でない記法（末尾カンマ、コメント、シングルクォートなど）の早期検出に加え Gson の RFC 8259 厳密モード；エラーは可能なら行/列を表示。</li>
+          <li><b>セマンティック diff</b>：左右並べて強調表示；配列要素の妥当な対応付け（完全一致、安定 id、volatile id のみ変化時の構造フィンガープリント、類似度フォールバック）。</li>
+          <li><b>操作フロー</b>：比較後は結果ビューを自動表示し最初の差分へジャンプ；前へ/次へで強調を巡回；メインボタンで結果と編集を切り替え。</li>
+          <li><b>ツリー表示</b>：フォーマットタブ内のオプションのツリー（展開/折りたたみ）。</li>
+          <li><b>UI と多言語</b>：重い処理は UI スレッド外；多言語 UI と手動の言語上書き（再起動後も保持）。</li>
+        </ul>
+
+        <h2>JSON Tools — 한국어</h2>
+        <p>IntelliJ 계열 IDE용 사이드 도구 창입니다. JSON을 안전하게 포맷하고 두 문서를 <b>의미상</b> 비교합니다(객체 키 순서와 배열 요소 순서 무시). <b>초대형 JSON 최적화</b>: 파싱과 diff는 EDT 밖에서 실행하고 단계적 렌더링으로 IDE 멈춤 없이 큰 페이로드를 다룹니다.</p>
+        <ul>
+          <li><b>대용량 JSON과 반응성</b>: 비동기 처리와 diff 강조·대용량 출력 포맷 시 DOM/편집기의 잦은 증분 업데이트 최소화.</li>
+          <li><b>엄격한 포맷</b>: 비표준 패턴(후행 쉼표, 주석, 작은따옴표 문자열 등) 조기 차단 및 Gson RFC 8259 STRICT 파싱; 가능하면 행/열 안내.</li>
+          <li><b>의미론적 diff</b>: 좌우 나란히 강조; 배열 요소 현명한 매칭(정확 일치, 안정적 id, volatile id만 바뀔 때 구조 지문, 유사도 폴백).</li>
+          <li><b>워크플로</b>: 비교 후 결과 보기 자동 전환 및 첫 차이로 이동; 이전/다음으로 강조 탐색; 주 버튼으로 결과와 편집 전환.</li>
+          <li><b>트리 뷰</b>: 포맷 탭 내 선택적 트리(펼치기/접기).</li>
+          <li><b>UI 및 다국어</b>: 무거운 작업은 UI 스레드 밖; 여러 언어 및 수동 언어 선택(재시작 후 유지).</li>
+        </ul>
+
+        <div dir="rtl">
+        <h2>JSON Tools — العربية</h2>
+        <p>نافذة أدوات جانبية لبيئات IntelliJ: تنسيق JSON بأمان ومقارنة مستندين <b>دلاليًا</b> (تُتجاهل ترتيب مفاتيح الكائنات وترتيب عناصر المصفوفات). <b>محسّنة لملفات JSON الضخمة جدًا</b>: التحليل والفرق خارج EDT مع عرض تدريجي لتقليل تجمّد IDE.</p>
+        <ul>
+          <li><b>JSON كبير وواجهة سلسة</b>: حساب غير متزامن وتقليل تحديثات DOM/المحرّر الدقيقة عند تمييز الفروق وتنسيق المخرجات الكبيرة.</li>
+          <li><b>تنسيق صارم</b>: اعتراض مبكر لمخالفات شائعة لـ RFC (فواصل زائدة، تعليقات، سلاسل بعلامات اقتباس مفردة، إلخ) مع Gson بدقة RFC 8259؛ رسائل تشير إلى السطر/العمود إن أمكن.</li>
+          <li><b>فرق دلالي</b>: عرضان ملونان جنبًا إلى جنب؛ مطابقة ذكية لعناصر المصفوفات (تطابق تام، معرّف ثابت، بصمة بنيوية عند تغيّر المعرفات المتقلبة فقط، احتياط بالتشابه).</li>
+          <li><b>سير العمل</b>: بعد المقارنة يُفتح عرض النتيجة والانتقال تلقائيًا إلى أول فرق؛ سابق/تالي؛ زر رئيسي للتبديل بين النتيجة والتحرير.</li>
+          <li><b>عرض شجري</b>: مستكشف اختياري في تبويب التنسيق (توسيع/طي).</li>
+          <li><b>واجهة وتعدد لغات</b>: العمل الثقيل خارج خيط الواجهة؛ دعم لغات متعددة واختيار يدوي يبقى بعد إعادة التشغيل.</li>
+        </ul>
+        </div>
+
+        <h2>JSON Tools — Türkçe</h2>
+        <p>IntelliJ tabanlı IDE’ler için yan araç penceresi: JSON’u güvenle biçimlendirin ve iki yükü <b>anlamsal</b> olarak karşılaştırın (nesne anahtarı ve dizi öğesi sırası yok sayılır). <b>Çok büyük JSON için optimize</b>: ayrıştırma ve diff EDT dışında; aşamalı çizim ile IDE’nin donması engellenir.</p>
+        <ul>
+          <li><b>Dev JSON, akıcı arayüz</b>: eşzamansız işlem ve diff vurgusu ile büyük çıktı biçimlendirmede gereksiz artımlı DOM/düzenleyici güncellemelerinin azaltılması.</li>
+          <li><b>Sıkı biçimlendirme</b>: RFC dışı yaygın sorunlar (sondaki virgüller, yorumlar, tek tırnaklı dizeler vb.) için erken yakalama ve Gson RFC 8259 sıkı ayrıştırma; mümkünse satır/sütun.</li>
+          <li><b>Anlamsal diff</b>: yan yana vurgulu sonuçlar; dizi eşlemesi (tam eşleşme, varsa sabit kimlik, yalnızca uçucu kimlikler değişince yapı parmak izi, benzerlik yedeği).</li>
+          <li><b>İş akışı</b>: karşılaştırma sonrası sonuç görünümü ve ilk farka atlama; Önceki/Sonraki; ana düğme sonuç ile düzenleme arasında geçiş.</li>
+          <li><b>Ağaç görünümü</b>: Biçim sekmesinde isteğe bağlı ağaç (genişlet/daralt).</li>
+          <li><b>Arayüz ve çok dillilik</b>: ağır iş UI iş parçacığı dışında; çoklu dil ve elle seçilen dil (yeniden başlatmada kalır).</li>
+        </ul>
+
+        <h2>JSON Tools — Español</h2>
+        <p>Complemento de ventana lateral para IDE basados en IntelliJ: formatea JSON de forma segura y compara dos cargas <b>en el sentido semántico</b> (se ignora el orden de claves de objeto y de elementos en arrays). <b>Optimizado para JSON muy grandes</b>: el análisis y el diff se ejecutan fuera del EDT, con renderizado por fases para que cargas enormes sigan siendo útiles sin congelar el IDE.</p>
+        <ul>
+          <li><b>JSON enorme, interfaz fluida</b>: cómputo asíncrono y menos actualizaciones incrementales finas del DOM/editor al resaltar diferencias y formatear salidas grandes.</li>
+          <li><b>Formateo estricto</b>: detecta pronto problemas habituales fuera de RFC (comas finales, comentarios, cadenas con comillas simples, etc.) más análisis estricto Gson RFC 8259; los errores indican línea/columna cuando es posible.</li>
+          <li><b>Diff semántico</b>: resultados lado a lado resaltados; emparejamiento razonable de arrays (coincidencia exacta, id estable si existe, huella estructural cuando solo cambian ids volátiles, respaldo por similitud).</li>
+          <li><b>Flujo de trabajo</b>: tras comparar, abre la vista de resultados y salta al primer cambio; Anterior/Siguiente recorre resaltados; el botón principal alterna resultado y edición.</li>
+          <li><b>Vista en árbol</b>: explorador opcional en la pestaña Formato (expandir/contraer).</li>
+          <li><b>IU e i18n</b>: el trabajo pesado va fuera del hilo de interfaz; varios idiomas y anulación manual de idioma (persiste tras reiniciar).</li>
+        </ul>
+
+        <h2>JSON Tools — Português</h2>
+        <p>Plugin de janela lateral para IDEs IntelliJ: formate JSON com segurança e compare duas cargas <b>semanticamente</b> (ordem de chaves de objeto e de elementos em arrays é ignorada). <b>Otimizado para JSON muito grande</b>: análise e diff fora da EDT, renderização em etapas para que o IDE não trave.</p>
+        <ul>
+          <li><b>JSON grande, IU responsiva</b>: processamento assíncrono e menos atualizações incrementais ao pintar destaques de diff e formatar saídas grandes.</li>
+          <li><b>Formatação rigorosa</b>: intercepta cedo problemas fora da RFC (vírgulas finais, comentários, strings com aspas simples etc.) mais Gson STRICT RFC 8259; erros com linha/coluna quando possível.</li>
+          <li><b>Diff semântico</b>: resultados lado a lado destacados; pareamento sensato de arrays (match exato, id estável, impressão estrutural quando só ids voláteis mudam, fallback por similaridade).</li>
+          <li><b>Fluxo</b>: após comparar, abre o resultado e vai à primeira diferença; Ant./Próx.; botão principal alterna resultado e edição.</li>
+          <li><b>Vista em árvore</b>: explorador opcional na aba Formatar (expandir/recolher).</li>
+          <li><b>IU e idiomas</b>: trabalho pesado fora da thread da IU; vários idiomas e idioma manual persistente após reinício.</li>
+        </ul>
+
+        <h2>JSON Tools — हिन्दी</h2>
+        <p>IntelliJ आधारित IDE के लिए साइड टूल विंडो: JSON को सुरक्षित रूप से फ़ॉर्मेट करें और दो दस्तावेज़ों का <b>अर्थगत</b> अंतर देखें (ऑब्जेक्ट कुंजी और ऐरे तत्वों का क्रम नज़रअंदाज़)। <b>बहुत बड़े JSON के लिए अनुकूलित</b>: पार्सिंग और diff EDT से अलग; चरणबद्ध रेंडरिंग से IDE जमना कम होता है।</p>
+        <ul>
+          <li><b>विशाल JSON, चिकना UI</b>: असिंक्रोनस गणना और diff हाइलाइटिंग तथा बड़े आउटपुट फ़ॉर्मेटिंग पर बार‑बार छोटे DOM/संपादक अपडेट कम करना।</li>
+          <li><b>सख्त फ़ॉर्मेटिंग</b>: गैर‑RFC समस्याएँ (अंतिम अल्पविराम, टिप्पणियाँ, एकल‑उद्धरण स्ट्रिंग आदि) जल्द पकड़ना और Gson RFC 8259 सख्त पार्सिंग; संभव हो तो पंक्ति/स्तंभ।</li>
+          <li><b>अर्थगत diff</b>: दोहरे रंगीन परिणाम; स्मार्ट ऐरे मिलान (सटीक मेल, स्थिर id, केवल अस्थिर id बदलने पर संरचना फिंगरप्रिंट, समानता फ़ॉलबैक)।</li>
+          <li><b>कार्यप्रवाह</b>: तुलना के बाद स्वचालित परिणाम दृश्य और पहले अंतर पर जाना; पिछला/अगला; मुख्य बटन परिणाम और संपादन के बीच।</li>
+          <li><b>ट्री दृश्य</b>: फ़ॉर्मेट टैब में वैकल्पिक ट्री (फैलाना/संकुचित करना)।</li>
+          <li><b>UI और बहुभाषी</b>: भारी कार्य UI थ्रेड के बाहर; कई भाषाएँ और मैन्युअल भाषा चयन (रीस्टार्ट के बाद भी)।</li>
+        </ul>
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="JSON Tools"
+                    stripeTitle="%plugin.toolWindow.id"
+                    anchor="right"
+                    factoryClass="com.cn.else.jsontools.JsonToolsWindowFactory"
+                    icon="AllIcons.FileTypes.Json"/>
+    </extensions>
+</idea-plugin>

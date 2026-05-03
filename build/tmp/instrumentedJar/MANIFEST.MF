@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: Gradle 8.11.1
+Build-JVM: 11.0.27 (Azul Systems, Inc. 11.0.27+6-LTS)
+Version: 3.2.6
+Build-Plugin: Gradle IntelliJ Plugin
+Build-Plugin-Version: 1.17.4
+Build-OS: Mac OS X 26.4.1 aarch64
+Build-SDK: IC-2024.1.7
+
