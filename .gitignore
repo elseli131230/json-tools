@@ -1,0 +1,28 @@
+# Gradle
+.gradle/
+build/
+
+# Kotlin / JVM 编译输出（与 src 重复的 IDE 输出目录）
+out/
+bin/
+
+# Kotlin 2.x 本地缓存与错误日志
+.kotlin/
+
+# 操作系统
+.DS_Store
+Thumbs.db
+
+# 日志与临时文件
+*.log
+*.tmp
+*.swp
+*~
+
+# 本地配置（若存在）
+local.properties
+.env
+.env.*
+
+# JVM 诊断
+*.hprof
