@@ -22,6 +22,7 @@ public final class JsonToolsWindowFactory implements ToolWindowFactory {
         try {
             Object panel = Class.forName(PANEL_CLASS_NAME).getDeclaredConstructor().newInstance();
             JComponent component = (JComponent) panel.getClass().getMethod("getComponent").invoke(panel);
+            // 空显示名：避免与侧栏 stripe、工具窗口标题形成重复的第三条「内容标签」标题。
             Content content = ContentFactory.getInstance().createContent(component, "", false);
             toolWindow.getContentManager().addContent(content);
         } catch (ReflectiveOperationException e) {

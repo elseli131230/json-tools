@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.cn.else.jsontools"
-version = "3.2.7"
+version = "3.2.9"
 
 repositories {
     mavenCentral()

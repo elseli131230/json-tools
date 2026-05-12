@@ -5,7 +5,6 @@ import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.intellij.icons.AllIcons
-import com.intellij.ide.util.PropertiesComponent
 import com.intellij.ui.JBColor
 import com.intellij.ui.JBSplitter
 import com.intellij.ui.components.JBCheckBox
@@ -30,10 +29,8 @@ import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
-import java.util.Locale
 import java.util.concurrent.Executors
 import javax.swing.BorderFactory
-import javax.swing.JComboBox
 import javax.swing.JButton
 import javax.swing.JComponent
 import javax.swing.JPanel
@@ -68,9 +65,6 @@ import javax.swing.JScrollBar
  */
 class JsonToolsPanel {
     private fun msg(key: String, vararg params: Any): String = JsonToolsBundle.message(key, *params)
-    private data class LanguageOption(val locale: Locale?, val text: String) {
-        override fun toString(): String = text
-    }
 
     // ---------------- 输入区 ----------------
 
@@ -148,9 +142,6 @@ class JsonToolsPanel {
 
     private val tabbedPane = JBTabbedPane()
     private val rootPanel = JPanel(BorderLayout())
-    private val languageLabel = JBLabel("")
-    private val languageCombo = JComboBox<LanguageOption>()
-    private var languageComboUpdating = false
     private val formatCardLayout = java.awt.CardLayout()
     private val formatContentPanel = JPanel(formatCardLayout)
     private val formatTreeToggleButton = JButton(msg("button.treeView"), AllIcons.Actions.ShowAsTree)
@@ -162,90 +153,24 @@ class JsonToolsPanel {
     val component: JComponent
 
     init {
-        restoreSavedLanguagePreference()
         rebuildTabs()
-        installLanguageSwitcher()
         installCompareSelectionSync()
         installCompareFindFocusTracking()
         installFindFieldShortcuts(formatFindField) { forward -> findInFormatPane(forward) }
         installFindFieldShortcuts(compareFindField) { forward -> findInComparePane(forward) }
 
         component = rootPanel.apply {
-            add(buildGlobalToolbar(), BorderLayout.NORTH)
-            add(tabbedPane, BorderLayout.CENTER)
+            add(buildTabbedArea(), BorderLayout.CENTER)
             preferredSize = Dimension(900, 600)
         }
     }
 
-    private fun buildGlobalToolbar(): JComponent {
-        return JPanel(FlowLayout(FlowLayout.LEFT, 8, 2)).apply {
-            border = JBUI.Borders.empty(0, 4)
-            languageCombo.maximumRowCount = 16
-            add(languageLabel)
-            add(languageCombo)
-        }
-    }
-
-    private fun installLanguageSwitcher() {
-        refreshLanguageControls()
-        languageCombo.addActionListener {
-            if (languageComboUpdating) return@addActionListener
-            val selected = languageCombo.selectedItem as? LanguageOption ?: return@addActionListener
-            JsonToolsBundle.setLocale(selected.locale)
-            persistLanguagePreference(selected.locale)
-            refreshLanguageControls()
-            rebuildTabs()
-            compareStatus.foreground = OK_GREEN
-            compareStatus.text = msg("status.languageSwitched", selected.text)
-        }
-    }
-
-    private fun restoreSavedLanguagePreference() {
-        val raw = PropertiesComponent.getInstance().getValue(PREF_LANGUAGE_TAG) ?: return
-        if (raw == FOLLOW_IDE_VALUE) {
-            JsonToolsBundle.setLocale(null)
-            return
-        }
-        val locale = Locale.forLanguageTag(raw)
-        if (locale.language.isBlank()) {
-            JsonToolsBundle.setLocale(null)
-            return
-        }
-        JsonToolsBundle.setLocale(locale)
-    }
-
-    private fun persistLanguagePreference(locale: Locale?) {
-        val value = locale?.toLanguageTag() ?: FOLLOW_IDE_VALUE
-        PropertiesComponent.getInstance().setValue(PREF_LANGUAGE_TAG, value)
-    }
-
-    private fun refreshLanguageControls() {
-        languageComboUpdating = true
-        try {
-            languageLabel.text = msg("language.label")
-            val options = listOf(
-                LanguageOption(null, msg("language.auto")),
-                LanguageOption(Locale.SIMPLIFIED_CHINESE, msg("language.zh")),
-                LanguageOption(Locale.ENGLISH, msg("language.en")),
-                LanguageOption(Locale.JAPANESE, msg("language.ja")),
-                LanguageOption(Locale.KOREAN, msg("language.ko")),
-                LanguageOption(Locale.FRENCH, msg("language.fr")),
-                LanguageOption(Locale.GERMAN, msg("language.de")),
-                LanguageOption(Locale.forLanguageTag("es"), msg("language.es")),
-                LanguageOption(Locale.forLanguageTag("pt"), msg("language.pt")),
-                LanguageOption(Locale.forLanguageTag("ru"), msg("language.ru")),
-                LanguageOption(Locale.forLanguageTag("hi"), msg("language.hi")),
-                LanguageOption(Locale.forLanguageTag("tr"), msg("language.tr")),
-                LanguageOption(Locale.forLanguageTag("ar"), msg("language.ar"))
-            )
-            languageCombo.removeAllItems()
-            options.forEach { languageCombo.addItem(it) }
-            val current = JsonToolsBundle.currentLocale().language
-            val selectedIndex = if (!JsonToolsBundle.hasLocaleOverride()) 0
-            else options.indexOfFirst { it.locale?.language == current }.takeIf { it >= 0 } ?: 0
-            languageCombo.selectedIndex = selectedIndex
-        } finally {
-            languageComboUpdating = false
+    /** 工具窗口内容区：仅标签页。界面语言始终跟随 JVM [Locale.getDefault]（与 IDE/系统区域设置一致）。 */
+    private fun buildTabbedArea(): JComponent {
+        return JPanel(BorderLayout()).apply {
+            isOpaque = false
+            border = JBUI.Borders.empty(0, 4, 0, 2)
+            add(tabbedPane, BorderLayout.CENTER)
         }
     }
 
@@ -1381,8 +1306,6 @@ class JsonToolsPanel {
     // ============================================================
 
     companion object {
-        private const val PREF_LANGUAGE_TAG = "com.cn.else.jsontools.language.tag"
-        private const val FOLLOW_IDE_VALUE = "follow-ide"
         private const val FORMAT_CARD_TEXT = "FORMAT_TEXT"
         private const val FORMAT_CARD_TREE = "FORMAT_TREE"
         private const val COMPARE_CARD_INPUT = "COMPARE_INPUT"
