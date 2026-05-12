@@ -231,12 +231,12 @@ class JsonToolsPanel {
                 LanguageOption(Locale.KOREAN, msg("language.ko")),
                 LanguageOption(Locale.FRENCH, msg("language.fr")),
                 LanguageOption(Locale.GERMAN, msg("language.de")),
-                LanguageOption(Locale("es"), msg("language.es")),
-                LanguageOption(Locale("pt"), msg("language.pt")),
-                LanguageOption(Locale("ru"), msg("language.ru")),
-                LanguageOption(Locale("hi"), msg("language.hi")),
-                LanguageOption(Locale("tr"), msg("language.tr")),
-                LanguageOption(Locale("ar"), msg("language.ar"))
+                LanguageOption(Locale.forLanguageTag("es"), msg("language.es")),
+                LanguageOption(Locale.forLanguageTag("pt"), msg("language.pt")),
+                LanguageOption(Locale.forLanguageTag("ru"), msg("language.ru")),
+                LanguageOption(Locale.forLanguageTag("hi"), msg("language.hi")),
+                LanguageOption(Locale.forLanguageTag("tr"), msg("language.tr")),
+                LanguageOption(Locale.forLanguageTag("ar"), msg("language.ar"))
             )
             languageCombo.removeAllItems()
             options.forEach { languageCombo.addItem(it) }

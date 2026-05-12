@@ -1,3 +1,4 @@
+import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -8,15 +9,20 @@ plugins {
 }
 
 group = "com.cn.else.jsontools"
-version = "3.2.6"
+version = "3.2.7"
 
 repositories {
     mavenCentral()
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 dependencies {
@@ -37,9 +43,11 @@ intellij {
 tasks {
     patchPluginXml {
         version.set(project.version.toString())
-        // since-build 仍从 2018.1 段起声明；until-build 设为具体版本号而非 magic value。
-        sinceBuild.set("181")
-        untilBuild.set("253.*")
+        // 2023.2 及更早平台缺少 ToolWindowFactory 上若干默认方法；Kotlin 2.x 对接口会生成
+        // invokespecial 桥接导致 NoSuchMethodError。实际最低支持自 2023.3（233）起。
+        sinceBuild.set("233")
+        // 2026.1 对应平台分支 261（例如 IU-261.23567.138）；253.* 会拒绝安装。
+        untilBuild.set("271.*")
     }
 
     withType<KotlinCompile>().configureEach {

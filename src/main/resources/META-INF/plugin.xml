@@ -1,11 +1,11 @@
 <idea-plugin>
     <id>com.cn.else.jsontools</id>
     <resource-bundle>messages.JsonToolsBundle</resource-bundle>
-    <name>JSON Tools</name>
+    <name>JSON Tools pro max</name>
     <vendor email="you@example.com" url="https://example.com">Else</vendor>
 
     <description><![CDATA[
-        <h2>JSON Tools — English</h2>
+        <h2>JSON Tools pro max — English</h2>
         <p>A side-tool-window plugin for IntelliJ-based IDEs: format JSON safely and compare two JSON payloads <b>semantically</b> (object key order and array element order are ignored). <b>Optimized for very large JSON</b>: parsing and diff run off the EDT with staged rendering so huge payloads remain usable without freezing the IDE.</p>
         <ul>
           <li><b>Huge JSON, responsive UI</b>: asynchronous compute plus minimized incremental DOM/editor churn when painting diff highlights and formatting large outputs.</li>
@@ -16,7 +16,7 @@
           <li><b>UI &amp; i18n</b>: heavy work runs off the UI thread; interface strings support multiple languages with an optional manual language override (persisted across restarts).</li>
         </ul>
 
-        <h2>JSON Tools — 简体中文</h2>
+        <h2>JSON Tools pro max — 简体中文</h2>
         <p>适用于 IntelliJ 系列 IDE 的侧栏工具窗口插件：<b>安全格式化 JSON</b>，并对两份 JSON 做<b>语义对比</b>（忽略对象键顺序与数组元素顺序）。<b>面向超大 JSON</b>：耗时解析与对比在后台执行，渲染侧避免细碎频繁的增量更新，尽量做到<b>大体量文档仍流畅、IDE 不易卡顿</b>。</p>
         <ul>
           <li><b>超大 JSON、流畅优先</b>：异步计算；格式化与差异高亮采用「先装入全文再分段着色」等策略，减轻界面抖动与长时间冻结。</li>
@@ -27,7 +27,7 @@
           <li><b>界面与多语言</b>：解析与对比在后台线程执行；界面支持多语言，并可手动选择语言（重启后仍保留手动设置）。</li>
         </ul>
 
-        <h2>JSON Tools — Deutsch</h2>
+        <h2>JSON Tools pro max — Deutsch</h2>
         <p>Seitenbereich für IntelliJ-basierte IDEs: JSON sicher formatieren und zwei Dokumente <b>semantisch</b> vergleichen (Reihenfolge von Objektschlüsseln und Arrayelementen wird ignoriert). <b>Für sehr große JSON optimiert</b>: Parsing und Diff laufen nicht auf dem EDT; gestuftes Rendering, damit große Daten nutzbar bleiben ohne die IDE einzufrieren.</p>
         <ul>
           <li><b>Riesiges JSON, flüssige UI</b>: asynchrone Berechnung und weniger feinkörnige DOM-/Editor-Updates bei Diff-Hervorhebung und Formatierung großer Ausgaben.</li>
@@ -38,7 +38,7 @@
           <li><b>Oberfläche &amp; i18n</b>: schwere Arbeit im Hintergrund; viele Sprachen, optionale manuelle Sprachwahl (über Neustarts gespeichert).</li>
         </ul>
 
-        <h2>JSON Tools — Français</h2>
+        <h2>JSON Tools pro max — Français</h2>
         <p>Fenêtre d’outil latérale pour les IDE IntelliJ : formater le JSON en toute sécurité et comparer deux documents <b>sémantiquement</b> (ordre des clés d’objet et des éléments de tableau ignoré). <b>Optimisé pour les très gros JSON</b> : analyse et diff hors fil d’interface, rendu par étapes pour éviter de figer l’IDE.</p>
         <ul>
           <li><b>Gros JSON, interface fluide</b> : calcul asynchrone et moins de mises à jour DOM/éditeur fines lors du surlignage des diffs et du formatage de gros résultats.</li>
@@ -49,7 +49,7 @@
           <li><b>IU &amp; i18n</b> : tâches lourdes hors thread UI ; plusieurs langues et langue manuelle persistante après redémarrage.</li>
         </ul>
 
-        <h2>JSON Tools — Русский</h2>
+        <h2>JSON Tools pro max — Русский</h2>
         <p>Боковая панель для IDE на платформе IntelliJ: безопасное форматирование JSON и <b>семантическое</b> сравнение двух документов (порядок ключей объектов и элементов массивов не учитывается). <b>Оптимизация под очень большие JSON</b>: разбор и diff не на EDT, поэтапная отрисовка — большие файлы остаются пригодными без зависания IDE.</p>
         <ul>
           <li><b>Большие JSON, отзывчивый интерфейс</b>: фоновые вычисления и минимизация частых инкрементальных обновлений DOM/редактора при подсветке diff и форматировании.</li>
@@ -60,7 +60,7 @@
           <li><b>Интерфейс и языки</b>: тяжёлая работа вне EDT; несколько языков и ручной выбор языка (сохраняется после перезапуска).</li>
         </ul>
 
-        <h2>JSON Tools — 日本語</h2>
+        <h2>JSON Tools pro max — 日本語</h2>
         <p>IntelliJ 系 IDE 向けサイドツールウィンドウ。<b>セマンティック</b>に JSON を整形・比較（オブジェクトのキー順と配列要素の順序は無視）。<b>超大規模 JSON 向け</b>：解析と diff は EDT 外で実行し、段階的レンダリングにより IDE をフリーズさせずに大きなデータを扱えます。</p>
         <ul>
           <li><b>巨大 JSON と応答性</b>：非同期処理と、diff 強調・大出力フォーマット時の細かすぎる DOM/エディタ更新の抑制。</li>
@@ -71,7 +71,7 @@
           <li><b>UI と多言語</b>：重い処理は UI スレッド外；多言語 UI と手動の言語上書き（再起動後も保持）。</li>
         </ul>
 
-        <h2>JSON Tools — 한국어</h2>
+        <h2>JSON Tools pro max — 한국어</h2>
         <p>IntelliJ 계열 IDE용 사이드 도구 창입니다. JSON을 안전하게 포맷하고 두 문서를 <b>의미상</b> 비교합니다(객체 키 순서와 배열 요소 순서 무시). <b>초대형 JSON 최적화</b>: 파싱과 diff는 EDT 밖에서 실행하고 단계적 렌더링으로 IDE 멈춤 없이 큰 페이로드를 다룹니다.</p>
         <ul>
           <li><b>대용량 JSON과 반응성</b>: 비동기 처리와 diff 강조·대용량 출력 포맷 시 DOM/편집기의 잦은 증분 업데이트 최소화.</li>
@@ -83,7 +83,7 @@
         </ul>
 
         <div dir="rtl">
-        <h2>JSON Tools — العربية</h2>
+        <h2>JSON Tools pro max — العربية</h2>
         <p>نافذة أدوات جانبية لبيئات IntelliJ: تنسيق JSON بأمان ومقارنة مستندين <b>دلاليًا</b> (تُتجاهل ترتيب مفاتيح الكائنات وترتيب عناصر المصفوفات). <b>محسّنة لملفات JSON الضخمة جدًا</b>: التحليل والفرق خارج EDT مع عرض تدريجي لتقليل تجمّد IDE.</p>
         <ul>
           <li><b>JSON كبير وواجهة سلسة</b>: حساب غير متزامن وتقليل تحديثات DOM/المحرّر الدقيقة عند تمييز الفروق وتنسيق المخرجات الكبيرة.</li>
@@ -95,7 +95,7 @@
         </ul>
         </div>
 
-        <h2>JSON Tools — Türkçe</h2>
+        <h2>JSON Tools pro max — Türkçe</h2>
         <p>IntelliJ tabanlı IDE’ler için yan araç penceresi: JSON’u güvenle biçimlendirin ve iki yükü <b>anlamsal</b> olarak karşılaştırın (nesne anahtarı ve dizi öğesi sırası yok sayılır). <b>Çok büyük JSON için optimize</b>: ayrıştırma ve diff EDT dışında; aşamalı çizim ile IDE’nin donması engellenir.</p>
         <ul>
           <li><b>Dev JSON, akıcı arayüz</b>: eşzamansız işlem ve diff vurgusu ile büyük çıktı biçimlendirmede gereksiz artımlı DOM/düzenleyici güncellemelerinin azaltılması.</li>
@@ -106,7 +106,7 @@
           <li><b>Arayüz ve çok dillilik</b>: ağır iş UI iş parçacığı dışında; çoklu dil ve elle seçilen dil (yeniden başlatmada kalır).</li>
         </ul>
 
-        <h2>JSON Tools — Español</h2>
+        <h2>JSON Tools pro max — Español</h2>
         <p>Complemento de ventana lateral para IDE basados en IntelliJ: formatea JSON de forma segura y compara dos cargas <b>en el sentido semántico</b> (se ignora el orden de claves de objeto y de elementos en arrays). <b>Optimizado para JSON muy grandes</b>: el análisis y el diff se ejecutan fuera del EDT, con renderizado por fases para que cargas enormes sigan siendo útiles sin congelar el IDE.</p>
         <ul>
           <li><b>JSON enorme, interfaz fluida</b>: cómputo asíncrono y menos actualizaciones incrementales finas del DOM/editor al resaltar diferencias y formatear salidas grandes.</li>
@@ -117,7 +117,7 @@
           <li><b>IU e i18n</b>: el trabajo pesado va fuera del hilo de interfaz; varios idiomas y anulación manual de idioma (persiste tras reiniciar).</li>
         </ul>
 
-        <h2>JSON Tools — Português</h2>
+        <h2>JSON Tools pro max — Português</h2>
         <p>Plugin de janela lateral para IDEs IntelliJ: formate JSON com segurança e compare duas cargas <b>semanticamente</b> (ordem de chaves de objeto e de elementos em arrays é ignorada). <b>Otimizado para JSON muito grande</b>: análise e diff fora da EDT, renderização em etapas para que o IDE não trave.</p>
         <ul>
           <li><b>JSON grande, IU responsiva</b>: processamento assíncrono e menos atualizações incrementais ao pintar destaques de diff e formatar saídas grandes.</li>
@@ -128,7 +128,7 @@
           <li><b>IU e idiomas</b>: trabalho pesado fora da thread da IU; vários idiomas e idioma manual persistente após reinício.</li>
         </ul>
 
-        <h2>JSON Tools — हिन्दी</h2>
+        <h2>JSON Tools pro max — हिन्दी</h2>
         <p>IntelliJ आधारित IDE के लिए साइड टूल विंडो: JSON को सुरक्षित रूप से फ़ॉर्मेट करें और दो दस्तावेज़ों का <b>अर्थगत</b> अंतर देखें (ऑब्जेक्ट कुंजी और ऐरे तत्वों का क्रम नज़रअंदाज़)। <b>बहुत बड़े JSON के लिए अनुकूलित</b>: पार्सिंग और diff EDT से अलग; चरणबद्ध रेंडरिंग से IDE जमना कम होता है।</p>
         <ul>
           <li><b>विशाल JSON, चिकना UI</b>: असिंक्रोनस गणना और diff हाइलाइटिंग तथा बड़े आउटपुट फ़ॉर्मेटिंग पर बार‑बार छोटे DOM/संपादक अपडेट कम करना।</li>
@@ -143,10 +143,10 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="JSON Tools"
+        <toolWindow id="JSON Tools pro max"
                     stripeTitle="%plugin.toolWindow.id"
                     anchor="right"
-                    factoryClass="com.cn.else.jsontools.JsonToolsWindowFactory"
+                    factoryClass="com.cn.elsejsontools.JsonToolsWindowFactory"
                     icon="AllIcons.FileTypes.Json"/>
     </extensions>
 </idea-plugin>
